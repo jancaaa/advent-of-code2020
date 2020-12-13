@@ -29,6 +29,16 @@ def part1(timestamp: int, departures: list) -> int:
     return (first_departure - timestamp) * bus
 
 
+def part2_generate_formula(departures: list) -> str:
+    formula = ""
+    for i, d in enumerate(departures):
+        if d != "x":
+            if i != 0:
+                formula += " and "
+            formula += f"(x+{i})%{d}"
+    return formula
+
+
 def part2(departures: list) -> int:
     return
 
@@ -38,4 +48,5 @@ if __name__ == "__main__":
 
     timestamp, departures = read_file("input.txt")
     print(f"Part 1: {part1(timestamp, departures)}")
+    print(f"Part 2 - WolframAlpha formula: {part2_generate_formula(departures)}")
     print(f"Part 2: {part2(departures)}")
